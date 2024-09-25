@@ -11,6 +11,7 @@ df = pd.DataFrame(columns=column_title)
 
 for token in tokens:
     url = f'https://api.divar.ir/v8/posts-v2/web/{token}'
+    # print(url)
     response = requests.get(url)
     json_data = response.json()
     data = json_data['sections']
@@ -27,12 +28,13 @@ for token in tokens:
                 if item.get('title') == 'قیمت کل':
                     l.append(item['value'])
                 if item.get('title') == 'قیمت هر متر':
+                    # print(item['value'])
                     l.append(item['value'])
-    url = json_data['share']['web_url']
+    url2 = json_data['share']['web_url']
     info = json_data['seo']['web_info']
     title = info.get('title')
     district_persian = info.get('district_persian')
-    l.append(url)
+    l.append(url2)
     l.append(title)
     l.append(district_persian)
-print(l)
+    print(url2)
