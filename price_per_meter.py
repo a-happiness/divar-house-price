@@ -1,5 +1,6 @@
 import requests
 import sqlite3
+
 from bs4 import BeautifulSoup
 import pandas as pd
 from pandas.io.formats.format import return_docstring
@@ -56,6 +57,6 @@ for token in tokens:
 
         district = json_data.get('webengage').get('district')
         print(district)
-        insert_to_table(token, price_per_meter, district)
+        insert_to_table(token, int(price_per_meter), district)
     else:
         print(f'An ad with this token:{token} has already been saved')
